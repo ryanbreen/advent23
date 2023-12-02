@@ -31,6 +31,7 @@ impl<O> TestCase<O> {
 }
 
 pub fn read_input(input: &str) -> String {
+    println!("Input: {}", input);
     if input.starts_with("file:") {
         let file_path = &input[5..]; // Skip the "file:" prefix
         std::fs::read_to_string(file_path)
@@ -52,8 +53,8 @@ where
     for case in test_cases {
         let actual_output = test_fn(&case.input);
         match &case.expected_output {
-            Some(expected) => assert_eq!(*expected, actual_output, "Failed test with input: {}", &case.input),
-            None => println!("Result for input '{}': {:?}", &case.input, actual_output),
+            Some(expected) => assert_eq!(*expected, actual_output, "Failed with output: {:?}", actual_output),
+            None => println!("Result: {:?}", actual_output),
         }
     }
 }
