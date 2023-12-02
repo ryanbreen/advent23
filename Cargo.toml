@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "day_01",
+    # Add new days here as you go
+]
